@@ -31,4 +31,4 @@ tests:
     - apt-get update && apt-get install -y google-chrome-stable
   script:
     - npm run test:ci
-  coverage: '/Statements.*?(\d+(?:\.\d+)?)%'
+  coverage: '/Statements.*?(\d+(?:\.\d+)?)%/'
