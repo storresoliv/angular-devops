@@ -48,6 +48,7 @@ build:
       - dist/
   only:
     - main
+    - 1-feature-create-and-run-test
 
 pages:
   stage: deploy
@@ -64,3 +65,4 @@ pages:
     name: production
   only:
     - main
+    - 1-feature-create-and-run-test
