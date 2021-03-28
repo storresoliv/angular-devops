@@ -26,8 +26,7 @@ tests:
     - install
   before_script:
     - apt-get update && apt-get install -y apt-transport-https
-    - wget -q -O - https://dl.ssl.google.com/linux/linux_signing_key.pub
-    - apt-key add linux_signing_key.pub
+    - wget --no-check-certificate -qO - https://dl.ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     - sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
     - apt-get update && apt-get install -y google-chrome-stable
   script:
