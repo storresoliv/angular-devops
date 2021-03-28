@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-devops');
   });
 
-  it('should render title', () => {
+  it('should render subtitle', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-devops app is running!');
+    expect(compiled.querySelector('.container--subtitle').textContent).toContain('a simple web app');
   });
 });
