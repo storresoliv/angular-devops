@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/styles/colors.scss";
+@import "assets/styles/button.scss";
+@import "assets/styles/input.scss";
+@import "assets/styles/text.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+}
+
+body {
+  background: $color-5;
+  background: linear-gradient(
+    90deg,
+    $color-3 0%,
+    $color-2 100%
+  );
+}
