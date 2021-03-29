@@ -11,12 +11,12 @@ jobs:
           node-version: '10.16.0'
       - name: Install dependencies
         run: npm install
-      - name: create artifact node_modules
+      - name: Create node-modules artifact
         uses: actions/upload-artifact@v2
         with:
           name: node-modules
-          path: node_modules/*
-      - name: cache node_modules
+          path: node_modules/
+      - name: cache node_modules folder
         uses: actions/cache@v2
         with:
           path: node_modules
@@ -27,6 +27,10 @@ jobs:
       CHROME_BIN: google-chrome
     needs: [install]
     steps:
+      - name: Use Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: '10.16.0'
       - run: |
           apt-get update && apt-get install -y apt-transport-https \
           apt-key adv --fetch-keys https://dl-ssl.google.com/linux/linux_signing_key.pub \
