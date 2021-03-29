@@ -10,7 +10,6 @@ jobs:
     env:
       BUILD_CONFIG: 'production'
       BASE_HREF: '/angular-devops/'
-    needs: [test]
     steps:
       - uses: actions/checkout@v2
 
