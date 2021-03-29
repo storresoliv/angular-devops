@@ -12,13 +12,13 @@ jobs:
       - name: Install dependencies
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install
-      - name: cache .npm folder
+      - name: cache node_modules folder
         id: cache-npm 
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: npm-
+          path: '**/node_modules'
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node-modules-
   
   test:
     runs-on: ubuntu-latest
