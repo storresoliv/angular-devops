@@ -1,55 +1,9 @@
-name: continuous-integration-and-delivery
-on: [push]
-jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.16.0'
-
-      - name: Cache node_modules folder 💖
-        id: cache-npm 
-        uses: actions/cache@v2
-        with:
-          path: 'node_modules/*'
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: node-modules-
-
-      - name: Install dependencies 📦
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm install
-  
-  test:
-    runs-on: ubuntu-latest
-    env:
-      CHROME_BIN: google-chrome
-    needs: [install]
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '10.16.0'
-      
-      - name: Cache node_modules folder 💖
-        uses: actions/cache@v2
-        with:
-          path: 'node_modules/*'
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: node-modules-
-
-      - name: Run test 🔨
-        run: npm run test:ci
-
+name: continuous-delivery
 on:
   push:
     branches:
       - main
+      - 4-feature-continuous-delivery
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -107,7 +61,3 @@ jobs:
         with:
           branch: gh-pages
           folder: public
-
-
-
-      
