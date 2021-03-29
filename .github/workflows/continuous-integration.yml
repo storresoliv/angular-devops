@@ -12,7 +12,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install
-        run: ls -l
+      - run: ls -l
       - name: cache node_modules folder
         id: cache-npm 
         uses: actions/cache@v2
