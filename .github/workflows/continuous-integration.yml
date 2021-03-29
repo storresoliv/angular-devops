@@ -10,10 +10,10 @@ jobs:
         with:
           name: node-modules
           path: node_modules/*
-    - name: cache node_modules
-      uses: actions/cache@v2
-      with:
-        path: node_modules
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
   
   test:
     runs-on: node-10.16.0
