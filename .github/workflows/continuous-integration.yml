@@ -8,8 +8,8 @@ jobs:
       - name: create artifact node_modules
         uses: actions/upload-artifact@v2
         with:
-          name: node_modules
-          path: node_modules
+          name: node-modules
+          path: node_modules/*
     - name: cache node_modules
       uses: actions/cache@v2
       with:
