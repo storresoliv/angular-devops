@@ -93,9 +93,9 @@ jobs:
       - name: Cache build
         uses: actions/cache@v2
         with:
+          path: public
+          key: build-${{env.GITHUB_SHA}}
           restore-keys: build-
-
-      - run: ls -l public
   
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
