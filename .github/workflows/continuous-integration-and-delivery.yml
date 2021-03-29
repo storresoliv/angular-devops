@@ -1,4 +1,4 @@
-name: continuous-integration
+name: continuous-integration-and-delivery
 on: [push]
 jobs:
   install:
@@ -46,5 +46,42 @@ jobs:
 
       - name: Run test
         run: npm run test:ci
+    
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUILD_CONFIG: 'production'
+      BASE_HREF: '/angular-devops/'
+    needs: [install]
+    steps:
+      - name: Cache node_modules folder
+        id: cache-npm 
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules/*'
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node-modules-
+
+      - name: Build 🔧
+        run: npm run build:ci
+
+      - name: Prepare dist 🔧
+        run: mkdir public
+        run: mv ./dist/angular-devops/* ./public/
+        run: cp public/index.html public/404.html
+      
+      - name: Upload artifact ✈️
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-1
+          path: public
+  
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: public
+
+
 
       
