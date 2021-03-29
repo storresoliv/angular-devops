@@ -1,4 +1,4 @@
-name: continuous-integration-and-delivery
+name: continuous-integration
 on: [push]
 jobs:
   install:
@@ -45,13 +45,19 @@ jobs:
 
       - name: Run test 🔨
         run: npm run test:ci
-    
+
+name: continuous-delovery
+on:
+  push:
+    branches:
+      - main
+jobs:
   build:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIG: 'production'
       BASE_HREF: '/angular-devops/'
-    needs: [install]
+    needs: [test]
     steps:
       - uses: actions/checkout@v2
 
