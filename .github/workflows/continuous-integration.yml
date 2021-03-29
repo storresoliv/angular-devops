@@ -38,6 +38,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.16.0'
+      
+      - name: cache node_modules folder
+        id: cache-npm 
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules/*'
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: node-modules-
 
       - run: ls -l
       - name: Run test
