@@ -10,10 +10,6 @@ install:
   stage: install
   script:
     - npm install
-  artifacts:
-    expire_in: 1h
-    paths:
-      - node_modules/
   cache:
     paths:
       - node_modules/
