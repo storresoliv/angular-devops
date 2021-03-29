@@ -5,10 +5,9 @@
 
 <section class="container--right">
   <form class="form-group">
-    <h2 class="form-group--title">form-title</h2>
-    <p class="form-group--subtitle">subtitle</p>
-    <input type="text" class="form-group--name" />
-    <input type="text" class="form-group--email"/>
-    <button class="button--success">button</button>
+    <h2 class="form-group--title">Contacto</h2>
+    <input type="text" class="form-group--name" [placeholder]="namePlaceholder" />
+    <input type="text" class="form-group--email" [placeholder]="emailPlaceholder"/>
+    <button class="button button--success">{{sendButtonText}}</button>
   </form>
 </section>

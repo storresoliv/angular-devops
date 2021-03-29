@@ -1,14 +1,19 @@
 @import "colors.scss";
 
 button {
-  width: 100%;
+  width: auto;
   font-size: 1rem;
   color: $color-5;
   background-color: $color-3;
   border: none;
   padding: 0;
   margin: 0;
-  font-size: 0.6rem;
+  font-size: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  font-weight: 800;
+  border-radius: 0.2rem 0.2rem;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
 
   &:focus {
     outline: none;
@@ -24,5 +29,6 @@ button {
 
   &:active {
     background-color: $color-2;
+    border-color: $color-2;
   }
 }
