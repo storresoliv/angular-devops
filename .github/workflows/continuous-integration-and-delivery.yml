@@ -71,7 +71,7 @@ jobs:
           mv ./dist/angular-devops/* ./public/
           cp public/index.html public/404.html
           ls -l
-          ls public
+          ls -l public
       
       - name: Upload artifact ✈️
         uses: actions/upload-artifact@v2
@@ -97,13 +97,13 @@ jobs:
           key: build-${{env.GITHUB_SHA}}
           restore-keys: build-
 
-      - run: ls -l
+      - run: ls -l public
   
-      # - name: Deploy 🚀
-      #   uses: JamesIves/github-pages-deploy-action@4.1.0
-      #   with:
-      #     branch: gh-pages
-      #     folder: public
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: public
 
 
 
