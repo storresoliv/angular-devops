@@ -70,8 +70,6 @@ jobs:
           mkdir public 
           mv ./dist/angular-devops/* ./public/
           cp public/index.html public/404.html
-          ls -l
-          ls -l public
       
       - name: Upload artifact ✈️
         uses: actions/upload-artifact@v2
@@ -93,8 +91,6 @@ jobs:
       - name: Cache build
         uses: actions/cache@v2
         with:
-          path: public
-          key: build-${{env.GITHUB_SHA}}
           restore-keys: build-
 
       - run: ls -l public
