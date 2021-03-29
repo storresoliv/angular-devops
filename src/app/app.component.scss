@@ -21,10 +21,19 @@
 
     &--right {
       .form-group {
+        width: auto;
         background-color: $color-1;
         margin-top: 30%;
         margin-right: 30%;
-        padding: 0.5rem;
+        padding: 0.6rem;
+        border-radius: 0.2rem;
+        border-bottom: 2px solid $color-2;
+        border-left: 2px solid $color-2;
+
+
+        .button {
+          margin-top: 1rem;
+        }
       }
     }
   }
