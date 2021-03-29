@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: '10.16.0'
 
-      - name: cache node_modules folder
+      - name: Cache node_modules folder
         id: cache-npm 
         uses: actions/cache@v2
         with:
@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install
-
-      - run: ls -l
-      
   
   test:
     runs-on: ubuntu-latest
@@ -39,7 +36,7 @@ jobs:
         with:
           node-version: '10.16.0'
       
-      - name: cache node_modules folder
+      - name: Cache node_modules folder
         id: cache-npm 
         uses: actions/cache@v2
         with:
@@ -47,9 +44,7 @@ jobs:
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: node-modules-
 
-      - run: ls -l
       - name: Run test
-        if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm run test:ci
 
       
