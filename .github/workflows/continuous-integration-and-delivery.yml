@@ -1,4 +1,4 @@
-name: continuous-integration
+name: continuous-integration-and-delivery
 on: [push]
 jobs:
   install:
@@ -46,7 +46,6 @@ jobs:
       - name: Run test 🔨
         run: npm run test:ci
 
-name: continuous-delovery
 on:
   push:
     branches:
