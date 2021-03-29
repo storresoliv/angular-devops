@@ -1,0 +1,31 @@
+name: continuous-integration
+on: [push]
+jobs:
+  install:
+    runs-on: node-10.16.0
+    steps:
+      - run: npm install
+      - name: create artifact node_modules
+        uses: actions/upload-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules/
+    - name: cache node_modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+  
+  test:
+    runs-on: node-10.16.0
+    env:
+      CHROME_BIN: google-chrome
+    needs: [install]
+    steps:
+      - run: |
+          apt-get update && apt-get install -y apt-transport-https \
+          apt-key adv --fetch-keys https://dl-ssl.google.com/linux/linux_signing_key.pub \
+          sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+          apt-get update && apt-get install -y google-chrome-stable
+      - run: npm run test:ci
+
+      
