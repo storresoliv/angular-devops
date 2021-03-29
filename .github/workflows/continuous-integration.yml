@@ -12,6 +12,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: cache .npm folder
+        id: cache-npm 
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -24,6 +25,7 @@ jobs:
       CHROME_BIN: google-chrome
     needs: [install]
     steps:
+      - if: steps.cache-npm.outputs.cache-hit != 'true'
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
       - name: Use Node.js
