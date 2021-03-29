@@ -51,7 +51,7 @@ jobs:
     env:
       BUILD_CONFIG: 'production'
       BASE_HREF: '/angular-devops/'
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/4-feature-continuous-delivery'
     steps:
       - uses: actions/checkout@v2
 
