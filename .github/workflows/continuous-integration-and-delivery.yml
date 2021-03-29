@@ -81,7 +81,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: public
-          key: build-${{ $GITHUB_SHA }}
+          key: build-$GITHUB_SHA
           restore-keys: build-
   
   deploy:
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: public
-          key: build-${{ $GITHUB_SHA }}
+          key: build-$GITHUB_SHA
           restore-keys: build-
   
       - name: Deploy 🚀
