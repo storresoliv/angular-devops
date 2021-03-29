@@ -10,6 +10,7 @@ jobs:
         with:
           node-version: '10.16.0'
       - name: Install dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install
       - name: cache .npm folder
         id: cache-npm 
@@ -20,7 +21,6 @@ jobs:
           restore-keys: npm-
   
   test:
-    if: steps.cache-npm.outputs.cache-hit != 'true'
     runs-on: ubuntu-latest
     env:
       CHROME_BIN: google-chrome
